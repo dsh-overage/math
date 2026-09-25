@@ -382,6 +382,10 @@
   }
 
   function startSession(mode){
+    if(mode !== 'diagnostic' && (state.lessonsCompleted || []).length === 0){
+      startLearning();
+      return;
+    }
     if(learning && !confirm('Exit the current lesson and start practice?')) return;
     if(session && !confirm('Exit the current session and start a new one?')) return;
     learning=null;
