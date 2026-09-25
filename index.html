@@ -28,7 +28,7 @@
           <span class="nav-icon">◇</span><span>Skill map</span>
         </button>
         <button class="nav-item" data-view="train">
-          <span class="nav-icon">↗</span><span>Training</span>
+          <span class="nav-icon">↗</span><span>Learn</span>
         </button>
         <button class="nav-item" data-view="analytics">
           <span class="nav-icon">▥</span><span>Analytics</span>
@@ -69,17 +69,17 @@
               <span class="orbit-core">∑</span>
             </div>
             <div class="hero-copy">
-              <div class="eyebrow accent">TODAY'S TARGET</div>
-              <h2>Train the weakest link.<br/>Keep the whole system sharp.</h2>
-              <p id="heroText">Your daily mission automatically mixes speed, applied math and reasoning around the skills that need the most work.</p>
+              <div class="eyebrow accent">LEARNING PATH</div>
+              <h2>Understand it first.<br/>Then make it automatic.</h2>
+              <p id="heroText">A lesson starts with the idea, shows a worked example, solves one with you, and only then moves to independent practice.</p>
               <div class="hero-actions">
-                <button class="primary-button" data-start-mode="daily">Start daily mission <span>→</span></button>
-                <button class="secondary-button" data-start-mode="diagnostic">Run diagnostic</button>
+                <button class="primary-button" data-start-learning>Continue learning <span>→</span></button>
+                <button class="secondary-button" data-start-mode="diagnostic">Calibrate my level</button>
               </div>
             </div>
             <div class="hero-metrics">
-              <div><span>MISSION</span><strong>12</strong><small>problems</small></div>
-              <div><span>EST.</span><strong>11</strong><small>minutes</small></div>
+              <div><span>LESSON</span><strong>4</strong><small>learning phases</small></div>
+              <div><span>EST.</span><strong>8</strong><small>minutes</small></div>
               <div><span>FOCUS</span><strong id="heroFocus">—</strong><small>weakest skill</small></div>
             </div>
           </article>
@@ -101,13 +101,19 @@
         </div>
 
         <div class="section-heading">
+          <div><div class="eyebrow">CURRICULUM</div><h2>Learning path</h2></div>
+          <button class="text-button" data-start-learning>Continue lesson →</button>
+        </div>
+        <div class="lesson-path" id="lessonPath"></div>
+
+        <div class="section-heading">
           <div><div class="eyebrow">YOUR SYSTEM</div><h2>Capability map</h2></div>
           <button class="text-button" data-go-view="map">Open full map →</button>
         </div>
         <div class="skill-grid" id="skillGrid"></div>
 
         <div class="section-heading lower">
-          <div><div class="eyebrow">TRAINING PROTOCOLS</div><h2>Choose the pressure</h2></div>
+          <div><div class="eyebrow">PRACTICE</div><h2>After you understand it</h2></div>
         </div>
         <div class="mode-grid">
           <button class="mode-card" data-start-mode="speed">
@@ -141,11 +147,11 @@
         <div class="training-stage panel" id="trainingStage">
           <div class="training-empty">
             <div class="training-logo">∑</div>
-            <h2>Choose a training protocol</h2>
-            <p>Daily Mission is the best default. Diagnostic recalibrates your skill map.</p>
+            <h2>Learn, then practice</h2>
+            <p>NUMEN first teaches the method, works through an example with you, and only then asks you to solve independently.</p>
             <div class="empty-actions">
-              <button class="primary-button" data-start-mode="daily">Daily mission</button>
-              <button class="secondary-button" data-start-mode="diagnostic">Diagnostic</button>
+              <button class="primary-button" data-start-learning>Continue learning</button>
+              <button class="secondary-button" data-start-mode="daily">Practice</button>
             </div>
           </div>
         </div>
@@ -198,6 +204,7 @@
   </template>
 
   <script src="core.js"></script>
+  <script src="lessons.js"></script>
   <script src="app.js" defer></script>
 </body>
 </html>
