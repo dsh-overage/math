@@ -1,9 +1,11 @@
 # NUMEN — Mathematical Intelligence
 
-A dependency-free adaptive mathematics trainer focused on useful numerical skill rather than school-style lesson completion.
+A dependency-free adaptive mathematics learning system that teaches a method first, works through an example, coaches one guided problem, and only then moves to independent practice.
 
 ## What is implemented
 
+- **16 guided lessons** across 8 practical math skills
+- Four-phase teaching loop: **Understand → Worked Example → Solve Together → Independent Practice**
 - Adaptive **Daily Mission** (12 problems)
 - 8-skill **Diagnostic** calibration
 - **Speed** protocol with a 60-second timer
