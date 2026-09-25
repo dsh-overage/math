@@ -16,6 +16,7 @@ jobs:
       - name: Syntax check
         run: |
           node --check core.js
+          node --check lessons.js
           node --check app.js
       - name: Core tests
         run: node tests/core.test.js
