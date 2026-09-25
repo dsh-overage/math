@@ -1,8 +1,13 @@
 const assert = require('assert');
 const Core = require('../core.js');
+require('../lessons.js');
+const Lessons = global.MathLessons;
 
 const state = Core.normalizedState();
 assert.equal(Object.keys(state.skills).length, 8);
+assert(Array.isArray(state.lessonsCompleted));
+assert.equal(Lessons.CURRICULUM.length, 16);
+assert(Lessons.nextLesson(state));
 assert.equal(Core.levelFromXp(0).level, 1);
 assert.equal(Core.weakestSkills(state, 2).length, 2);
 
@@ -29,4 +34,9 @@ assert.equal(Core.makeSession('diagnostic', state).length, 8);
 assert.equal(Core.makeSession('boss', state).length, 5);
 assert.equal(Core.makeSession('weakness', state).length, 10);
 
-console.log('NUMEN core tests passed');
+const firstLesson = Lessons.CURRICULUM[0];
+const xpBeforeLesson = state.xp;
+Core.completeLesson(state, firstLesson.id, firstLesson.skill);
+assert(state.lessonsCompleted.includes(firstLesson.id));
+assert(state.xp >= xpBeforeLesson + 25);
+console.log('NUMEN core + learning tests passed');
