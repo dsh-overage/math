@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>NUMEN — Mathematical Intelligence</title>
+  <meta name="description" content="Adaptive mathematics trainer for mental math, finance, logic, algebra, probability, statistics and data reasoning." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">N</div>
+        <div>
+          <div class="brand-name">NUMEN</div>
+          <div class="brand-sub">MATH INTELLIGENCE</div>
+        </div>
+      </div>
+
+      <nav class="nav-list" id="mainNav">
+        <button class="nav-item is-active" data-view="home">
+          <span class="nav-icon">⌂</span><span>Command</span>
+        </button>
+        <button class="nav-item" data-view="map">
+          <span class="nav-icon">◇</span><span>Skill map</span>
+        </button>
+        <button class="nav-item" data-view="train">
+          <span class="nav-icon">↗</span><span>Training</span>
+        </button>
+        <button class="nav-item" data-view="analytics">
+          <span class="nav-icon">▥</span><span>Analytics</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="focus-card">
+        <div class="eyebrow">CURRENT FOCUS</div>
+        <div class="focus-title" id="focusTitle">Mental Math</div>
+        <div class="mini-progress"><span id="focusProgress"></span></div>
+        <div class="focus-meta"><span id="focusScore">50</span><span>/ 100</span></div>
+      </div>
+
+      <button class="ghost-button sidebar-action" id="resetButton">Reset progress</button>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="viewEyebrow">PERSONAL MATH OS</div>
+          <h1 id="viewTitle">Command center</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="stat-chip"><span class="chip-kicker">STREAK</span><strong id="streakValue">0</strong><span>days</span></div>
+          <div class="stat-chip"><span class="chip-kicker">LEVEL</span><strong id="levelValue">1</strong></div>
+          <div class="profile-dot" title="Local profile">DS</div>
+        </div>
+      </header>
+
+      <section class="view is-active" id="view-home">
+        <div class="hero-grid">
+          <article class="hero-panel panel">
+            <div class="hero-orbit" aria-hidden="true">
+              <span class="orbit-ring ring-a"></span>
+              <span class="orbit-ring ring-b"></span>
+              <span class="orbit-core">∑</span>
+            </div>
+            <div class="hero-copy">
+              <div class="eyebrow accent">TODAY'S TARGET</div>
+              <h2>Train the weakest link.<br/>Keep the whole system sharp.</h2>
+              <p id="heroText">Your daily mission automatically mixes speed, applied math and reasoning around the skills that need the most work.</p>
+              <div class="hero-actions">
+                <button class="primary-button" data-start-mode="daily">Start daily mission <span>→</span></button>
+                <button class="secondary-button" data-start-mode="diagnostic">Run diagnostic</button>
+              </div>
+            </div>
+            <div class="hero-metrics">
+              <div><span>MISSION</span><strong>12</strong><small>problems</small></div>
+              <div><span>EST.</span><strong>11</strong><small>minutes</small></div>
+              <div><span>FOCUS</span><strong id="heroFocus">—</strong><small>weakest skill</small></div>
+            </div>
+          </article>
+
+          <article class="panel level-panel">
+            <div class="panel-heading">
+              <div><div class="eyebrow">CURRENT LEVEL</div><h3 id="rankName">Initiate</h3></div>
+              <div class="level-badge" id="levelBadge">01</div>
+            </div>
+            <div class="xp-line"><span id="xpProgress"></span></div>
+            <div class="xp-caption"><span id="xpCurrent">0 XP</span><span id="xpTarget">100 XP</span></div>
+            <div class="separator"></div>
+            <div class="micro-stats">
+              <div><span>Problems solved</span><strong id="solvedValue">0</strong></div>
+              <div><span>Accuracy</span><strong id="accuracyValue">—</strong></div>
+              <div><span>Best streak</span><strong id="bestStreakValue">0</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR SYSTEM</div><h2>Capability map</h2></div>
+          <button class="text-button" data-go-view="map">Open full map →</button>
+        </div>
+        <div class="skill-grid" id="skillGrid"></div>
+
+        <div class="section-heading lower">
+          <div><div class="eyebrow">TRAINING PROTOCOLS</div><h2>Choose the pressure</h2></div>
+        </div>
+        <div class="mode-grid">
+          <button class="mode-card" data-start-mode="speed">
+            <span class="mode-index">01</span><span class="mode-symbol">⚡</span>
+            <strong>Speed</strong><small>60 seconds. Fast arithmetic. No overthinking.</small>
+          </button>
+          <button class="mode-card featured" data-start-mode="weakness">
+            <span class="mode-index">02</span><span class="mode-symbol">◎</span>
+            <strong>Weakness attack</strong><small>Targets your two lowest skill ratings.</small>
+          </button>
+          <button class="mode-card" data-start-mode="boss">
+            <span class="mode-index">03</span><span class="mode-symbol">◆</span>
+            <strong>Boss fight</strong><small>Five hard applied problems. Minimal help.</small>
+          </button>
+          <button class="mode-card" data-start-mode="daily">
+            <span class="mode-index">04</span><span class="mode-symbol">◫</span>
+            <strong>Daily mission</strong><small>Balanced adaptive set. Your default workout.</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="view" id="view-map">
+        <div class="map-intro panel">
+          <div><div class="eyebrow accent">MASTERY GRAPH</div><h2>Mathematical intelligence is a network.</h2><p>Core numerical fluency unlocks stronger applied reasoning. Progress is shown as mastery, not completed lessons.</p></div>
+          <button class="secondary-button" data-start-mode="diagnostic">Recalibrate</button>
+        </div>
+        <div class="skill-map panel" id="skillMap"></div>
+      </section>
+
+      <section class="view" id="view-train">
+        <div class="training-stage panel" id="trainingStage">
+          <div class="training-empty">
+            <div class="training-logo">∑</div>
+            <h2>Choose a training protocol</h2>
+            <p>Daily Mission is the best default. Diagnostic recalibrates your skill map.</p>
+            <div class="empty-actions">
+              <button class="primary-button" data-start-mode="daily">Daily mission</button>
+              <button class="secondary-button" data-start-mode="diagnostic">Diagnostic</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-analytics">
+        <div class="analytics-grid">
+          <article class="panel metric-panel"><div class="eyebrow">TOTAL XP</div><strong id="analyticsXp">0</strong><small>earned through correct work</small></article>
+          <article class="panel metric-panel"><div class="eyebrow">ACCURACY</div><strong id="analyticsAccuracy">—</strong><small>all recorded attempts</small></article>
+          <article class="panel metric-panel"><div class="eyebrow">SESSIONS</div><strong id="analyticsSessions">0</strong><small>completed training sessions</small></article>
+          <article class="panel metric-panel"><div class="eyebrow">STRONGEST</div><strong id="analyticsStrongest">—</strong><small>highest current mastery</small></article>
+        </div>
+        <article class="panel history-panel">
+          <div class="panel-heading"><div><div class="eyebrow">RECENT WORK</div><h3>Session log</h3></div></div>
+          <div id="historyList" class="history-list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <template id="questionTemplate">
+    <div class="session-shell">
+      <div class="session-header">
+        <div>
+          <div class="eyebrow session-mode"></div>
+          <h2 class="session-title"></h2>
+        </div>
+        <div class="session-header-right">
+          <div class="timer-box is-hidden"><span>TIME</span><strong class="timer-value">60</strong></div>
+          <button class="icon-button session-close" aria-label="Exit session">×</button>
+        </div>
+      </div>
+      <div class="session-progress"><span></span></div>
+      <div class="session-meta"><span class="question-counter"></span><span class="skill-pill"></span><span class="difficulty-pill"></span></div>
+      <div class="problem-card">
+        <div class="problem-context"></div>
+        <div class="problem-prompt"></div>
+        <div class="answer-zone"></div>
+        <div class="problem-actions">
+          <button class="text-button hint-button">Hint</button>
+          <button class="primary-button submit-answer">Check answer</button>
+        </div>
+        <div class="feedback-card is-hidden"></div>
+      </div>
+      <div class="session-footer">
+        <span class="session-score">0 correct</span>
+        <span class="session-xp">+0 XP</span>
+      </div>
+    </div>
+  </template>
+
+  <script src="core.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
