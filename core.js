@@ -15,7 +15,7 @@
   };
 
   const DEFAULT_STATE = {
-    version: 1,
+    version: 2,
     xp: 0,
     solved: 0,
     correct: 0,
@@ -24,6 +24,7 @@
     lastActiveDate: null,
     sessions: 0,
     diagnosticDone: false,
+    lessonsCompleted: [],
     skills: Object.fromEntries(Object.keys(SKILLS).map(k => [k, 50])),
     attemptsBySkill: Object.fromEntries(Object.keys(SKILLS).map(k => [k, 0])),
     correctBySkill: Object.fromEntries(Object.keys(SKILLS).map(k => [k, 0])),
@@ -45,6 +46,7 @@
     for (const key of ['xp','solved','correct','streak','bestStreak','sessions']) if (Number.isFinite(raw[key])) state[key] = raw[key];
     state.lastActiveDate = raw.lastActiveDate || null;
     state.diagnosticDone = !!raw.diagnosticDone;
+    state.lessonsCompleted = Array.isArray(raw.lessonsCompleted) ? [...new Set(raw.lessonsCompleted.filter(x => typeof x === 'string'))] : [];
     for (const skill of Object.keys(SKILLS)) {
       if (raw.skills && Number.isFinite(raw.skills[skill])) state.skills[skill] = clamp(raw.skills[skill], 0, 100);
       if (raw.attemptsBySkill && Number.isFinite(raw.attemptsBySkill[skill])) state.attemptsBySkill[skill] = Math.max(0, raw.attemptsBySkill[skill]);
@@ -303,6 +305,16 @@
     state.diagnosticDone=true;
   }
 
+  function completeLesson(state, lessonId, skill) {
+    if (!state.lessonsCompleted.includes(lessonId)) {
+      state.lessonsCompleted.push(lessonId);
+      state.xp += 25;
+      if (state.skills[skill] !== undefined) state.skills[skill] = round(clamp(state.skills[skill] + 1.5, 0, 100), 1);
+    }
+    updateStreak(state);
+    return state;
+  }
+
   function completeSession(state, summary) {
     updateStreak(state);
     state.sessions += 1;
@@ -320,6 +332,6 @@
   return {
     SKILLS, DEFAULT_STATE, normalizedState, clamp, round, todayISO, updateStreak,
     levelFromXp, rankName, weakestSkills, strongestSkill, difficultyForSkill,
-    generateQuestion, makeSession, checkAnswer, applyAttempt, applyDiagnostic, completeSession
+    generateQuestion, makeSession, checkAnswer, applyAttempt, applyDiagnostic, completeLesson, completeSession
   };
 });
