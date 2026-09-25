@@ -2,13 +2,14 @@
 
 ## Current slice
 
-The first usable vertical slice is complete: a user can open the app, run a diagnostic or training session, answer generated math problems, receive immediate feedback, gain XP, change skill mastery and return later with progress preserved locally.
+The product now has a teaching-first vertical slice: a user can follow a guided lesson that explains a concept, shows a worked example, coaches a similar problem, and then moves into independent practice. Training modes remain available for reinforcement after understanding.
 
 ## Architecture
 
 - `index.html` — application shell and training template
 - `styles.css` — responsive visual system
 - `core.js` — pure training engine, question generators, scoring and state normalization
+- `lessons.js` — 16-lesson guided curriculum with concepts, rules, worked examples and coached problems
 - `app.js` — browser UI, navigation, sessions, persistence and timers
 - `manifest.webmanifest` + `sw.js` — install/offline-friendly shell when served over HTTP(S)
 - `tests/core.test.js` — dependency-free Node smoke tests for the training engine
@@ -24,6 +25,7 @@ The first usable vertical slice is complete: a user can open the app, run a diag
 ## Next high-value work
 
 - Add richer non-numeric interaction (drag/arrange, graphs, geometry, visual probability)
+- Expand each skill from 2 lessons into a deeper concept tree with prerequisites and spaced reviews
 - Build a larger problem bank with tagged misconceptions
 - Add spaced-repetition scheduling per concept
 - Add optional AI Socratic tutor endpoint
